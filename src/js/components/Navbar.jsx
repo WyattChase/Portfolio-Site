@@ -1,87 +1,121 @@
-// src/components/Navbar.jsx
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import placeholderLogo from "../../../public/assets/jaysax.jpg";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Projects", path: "/projects" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
-    <header className="bg-white/20 backdrop-blur-sm shadow w-full fixed top-0 z-20">
-      <nav className="container mx-auto flex items-center justify-between h-16 px-2">
-        {/* Logo / Brand Name */}
-        <div className="text-xl font-bold">
-          <Link to="/">Jean St. Cloud </Link>
+    <header className="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-sm shadow-md">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        {/* Logo + Name */}
+        <Link to="/" className="flex items-center space-x-3">
+          <div className="flip-card">
+            <div className="flip-inner">
+              <img
+                src={placeholderLogo}
+                alt="Logo Front"
+                className="flip-front"
+              />
+              <img
+                src="/assets/alternate-logo.jpg" // update path if needed
+                alt="Logo Back"
+                className="flip-back"
+              />
+            </div>
+          </div>
+          <span className="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            Jean St. Cloud
+          </span>
+        </Link>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center space-x-8 text-white text-lg font-medium">
+          <ul className="flex space-x-8">
+            {navLinks.map(({ name, path }) => (
+              <li key={name}>
+                <NavLink
+                  to={path}
+                  className={({ isActive }) =>
+                    `relative hover:text-teal-300 transition duration-200 ${
+                      isActive ? "text-teal-400" : "text-white"
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <>
+                      {name}
+                      {isActive && (
+                        <motion.span
+                          layoutId="underline"
+                          className="absolute left-0 -bottom-1 w-full h-0.5 bg-teal-400"
+                        />
+                      )}
+                    </>
+                  )}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+
+          {/* Hire Me Button */}
+          <a
+            href="#contact"
+            className="ml-6 px-5 py-2 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+          >
+            Hire Me
+          </a>
         </div>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "font-semibold" : "")}
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/about"
-              className={({ isActive }) => (isActive ? "font-semibold" : "")}
-            >
-              About
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/projects"
-              className={({ isActive }) => (isActive ? "font-semibold" : "")}
-            >
-              Projects
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) => (isActive ? "font-semibold" : "")}
-            >
-              Contact
-            </NavLink>
-          </li>
-        </ul>
-
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden text-white text-3xl"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? "✕" : "☰"}
         </button>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
-      {menuOpen && (
-        <ul className="flex flex-col items-center bg-white shadow md:hidden">
-          <li className="py-2">
-            <NavLink to="/" onClick={() => setMenuOpen(false)}>
-              Home
-            </NavLink>
-          </li>
-          <li className="py-2">
-            <NavLink to="/about" onClick={() => setMenuOpen(false)}>
-              About
-            </NavLink>
-          </li>
-          <li className="py-2">
-            <NavLink to="/projects" onClick={() => setMenuOpen(false)}>
-              Projects
-            </NavLink>
-          </li>
-          <li className="py-2">
-            <NavLink to="/contact" onClick={() => setMenuOpen(false)}>
-              Contact
-            </NavLink>
-          </li>
-        </ul>
-      )}
+      {/* Mobile Dropdown */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.ul
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="md:hidden bg-black/80 text-white flex flex-col items-center space-y-4 py-6 px-4"
+          >
+            {navLinks.map(({ name, path }) => (
+              <li key={name}>
+                <NavLink
+                  to={path}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-lg font-medium hover:text-teal-300 transition"
+                >
+                  {name}
+                </NavLink>
+              </li>
+            ))}
+            <li>
+              <a
+                href="#contact"
+                onClick={() => setMenuOpen(false)}
+                className="mt-2 inline-block px-5 py-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white font-semibold transition"
+              >
+                Hire Me
+              </a>
+            </li>
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
