@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../../../public/assets/jaysax.jpg";
-import altlogo from "../../../public/assets/alt-jaysax.png";
+import logo from "../../../assets/jaysax.jpg";
+import altlogo from "../../../assets/alt-jaysax.png";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
