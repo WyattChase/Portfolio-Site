@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import profileImg from "../../../assets/jaysax.jpg";
 import altlogo from "../../../assets/alt-jaysax.png";
-import sparkleSound from "../../../assets/sparkle.wav"; //test
+import sparkleSound from "../../../assets/sparkle.wav";
 
 const Hero = () => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -162,4 +162,3 @@ const Hero = () => {
 };
 
 export default Hero;
-public/assets
