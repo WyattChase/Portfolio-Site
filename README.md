@@ -6,7 +6,7 @@ Welcome to my personal portfolio built with React, Tailwind CSS, Vite, Firebase,
 
 ## 🚀 Live Demo
 
-Coming soon! Hosted on [Vercel]([https://jeanportfolio-orcin.vercel.app/]).
+Coming soon! Hosted on [Vercel](https://jeanportfolio-orcin.vercel.app/).
 
 ## 🛠 Tech Stack
 
