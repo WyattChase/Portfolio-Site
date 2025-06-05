@@ -28,12 +28,13 @@ export default function About() {
   }, []);
 
   return (
-    <section className="relative pt-36 px-6 min-h-screen bg-transparent text-gray-200 overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <section className="relative w-full px-6 pt-36 pb-20 bg-transparent text-gray-200">
+      <div className="absolute inset-0 -z-10">
         <StarfieldBackground />
       </div>
+
       <motion.div
-        className="relative z-10 max-w-4xl mx-auto"
+        className="relative z-10 w-full max-w-6xl mx-auto px-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}

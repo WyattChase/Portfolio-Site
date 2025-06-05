@@ -96,7 +96,7 @@ export default function Projects() {
                 ${
                   sortType === name
                     ? "bg-blue-600 text-white"
-                    : "bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600"
+                    : "bg-white dark:bg-gray-700 text-gray-800 dark:text-blue-300 border border-gray-300 dark:border-gray-600"
                 }`}
             >
               {icon}
@@ -127,7 +127,7 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="relative z-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
         <AnimatePresence>
           {sortedProjects.map((project) => (
             <motion.div

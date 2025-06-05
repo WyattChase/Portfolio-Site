@@ -3,16 +3,17 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import StarfieldBackground from "./Starfield-background";
 import { motion, AnimatePresence } from "framer-motion";
-import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { AiFillGithub, AiFillLinkedin, AiFillYahoo } from "react-icons/ai";
 import confetti from "canvas-confetti";
 import { toast } from "react-hot-toast";
+import CanvasParticles from "./CanvasParticles";
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
+  const [hoveredIcon, setHoveredIcon] = useState(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !email || !message) {
@@ -37,6 +38,16 @@ const Contact = () => {
     }
   };
 
+  const tooltipVariants = {
+    initial: { opacity: 0, y: 0, scale: 0.9 },
+    hover: {
+      opacity: 1,
+      y: -8,
+      scale: 1,
+      transition: { type: "spring", stiffness: 300 },
+    },
+  };
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 text-white">
       <StarfieldBackground />
@@ -47,6 +58,7 @@ const Contact = () => {
         transition={{ duration: 0.6 }}
         className="relative z-10 w-full max-w-xl bg-gradient-to-br from-gray-900 to-black bg-opacity-90 p-8 rounded-2xl shadow-2xl border border-teal-500"
       >
+        <CanvasParticles hoveredIcon={hoveredIcon} />
         <h2 className="text-3xl font-bold mb-6 text-center text-teal-400 animate-pulse">
           Contact Me
         </h2>
@@ -130,22 +142,87 @@ const Contact = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="mt-8 flex justify-center space-x-6 text-2xl text-white"
         >
-          <a
-            href="https://www.linkedin.com/in/jean-st-cloud/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-teal-400 transition-transform transform hover:scale-125 duration-300"
+          {/* LinkedIn */}
+          <motion.div
+            onMouseEnter={() => setHoveredIcon("linkedin")}
+            onMouseLeave={() => setHoveredIcon(null)}
+            className="relative flex flex-col items-center group cursor-pointer"
+            initial="initial"
+            whileHover="hover"
           >
-            <AiFillLinkedin />
-          </a>
-          <a
-            href="https://github.com/WyattChase"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-purple-400 transition-transform transform hover:scale-125 duration-300"
+            <a
+              href="https://www.linkedin.com/in/jean-st-cloud/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-teal-400 transition-transform transform hover:scale-125 duration-300"
+            >
+              <AiFillLinkedin />
+            </a>
+            <motion.div
+              variants={tooltipVariants}
+              initial="initial"
+              whileHover="hover"
+              animate={hoveredIcon === "linkedin" ? "hover" : "initial"}
+              className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-2 bg-gray-800 text-white text-xs rounded shadow-lg pointer-events-none z-10 flex items-center gap-1"
+            >
+              <AiFillLinkedin className="text-blue-400" />
+              LinkedIn
+            </motion.div>
+          </motion.div>
+
+          {/* GitHub */}
+          <motion.div
+            onMouseEnter={() => setHoveredIcon("github")}
+            onMouseLeave={() => setHoveredIcon(null)}
+            className="relative flex flex-col items-center group cursor-pointer"
+            initial="initial"
+            whileHover="hover"
           >
-            <AiFillGithub />
-          </a>
+            <a
+              href="https://github.com/WyattChase"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-purple-400 transition-transform transform hover:scale-125 duration-300"
+            >
+              <AiFillGithub />
+            </a>
+            <motion.div
+              variants={tooltipVariants}
+              initial="initial"
+              whileHover="hover"
+              animate={hoveredIcon === "github" ? "hover" : "initial"}
+              className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-2 bg-gray-800 text-white text-xs rounded shadow-lg pointer-events-none z-10 flex items-center gap-1"
+            >
+              <AiFillGithub className="text-purple-400" />
+              GitHub
+            </motion.div>
+          </motion.div>
+
+          {/* Yahoo */}
+          <motion.div
+            onMouseEnter={() => setHoveredIcon("yahoo")}
+            onMouseLeave={() => setHoveredIcon(null)}
+            className="relative flex flex-col items-center group cursor-pointer"
+            initial="initial"
+            whileHover="hover"
+          >
+            <a
+              href="mailto:jeanst.cloud@yahoo.com"
+              className="hover:text-yellow-400 transition-transform transform hover:scale-125 duration-300"
+            >
+              <AiFillYahoo />
+            </a>
+            <motion.div
+              variants={tooltipVariants}
+              initial="initial"
+              whileHover="hover"
+              animate={hoveredIcon === "yahoo" ? "hover" : "initial"}
+              className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-2 bg-gray-800 text-white text-xs rounded shadow-lg pointer-events-none z-10 flex items-center gap-1"
+            >
+              <AiFillYahoo className="text-yellow-400" />
+              jeanst.cloud@yahoo.com
+            </motion.div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>

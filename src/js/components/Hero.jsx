@@ -1,12 +1,32 @@
+import { useState, useRef } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import profileImg from "../../../public/assets/jaysax.jpg";
-import pixelImg from "../../../public/assets/A_pixel_art_portrait_in_pixel_art_style_depicts_a_.png"; // Your pixel image
+import altlogo from "../../../public/assets/alt-jaysax.png";
+import sparkleSound from "../../../public/assets/sparkle.wav";
 
 const Hero = () => {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [showSparkle, setShowSparkle] = useState(false);
+  const sparkleRef = useRef(null);
+  const audioRef = useRef(null);
+
+  const handleHover = () => {
+    setIsFlipped(true);
+    setShowSparkle(true);
+    audioRef.current?.play();
+    setTimeout(() => setShowSparkle(false), 600); // hide sparkles after animation
+  };
+
+  const handleLeave = () => setIsFlipped(false);
+
   return (
     <section className="min-h-screen flex flex-col items-center justify-center text-white text-center px-6 py-20 relative z-10">
+      {/* Audio */}
+      <audio ref={audioRef} src={sparkleSound} preload="auto" />
+
+      {/* Title */}
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -29,6 +49,7 @@ const Hero = () => {
         />
       </motion.h1>
 
+      {/* Subtitle */}
       <motion.p
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -39,32 +60,67 @@ const Hero = () => {
         with code and sound.
       </motion.p>
 
-      {/* Profile Image Flip Box */}
-      <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
-        className="relative w-52 h-52 mb-8"
-      >
-        <div className="group w-full h-full perspective">
-          <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
-            <div className="absolute inset-0 backface-hidden rounded-full overflow-hidden border-4 border-teal-400 shadow-lg">
-              <img
-                src={profileImg}
-                alt="Jean St. Cloud"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute inset-0 rotate-y-180 backface-hidden rounded-full overflow-hidden border-4 border-teal-400 shadow-lg">
-              <img
-                src={pixelImg}
-                alt="Pixel Jean"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </motion.div>
+      {/* Profile Image Flip using Framer Motion */}
+     {/* Profile Image Flip using Framer Motion */}
+<motion.div
+  initial={{ scale: 0.9, opacity: 0 }}
+  animate={{ scale: 1, opacity: 1 }}
+  transition={{ delay: 0.4, duration: 0.6 }}
+  className="relative w-52 h-52 mb-8"
+  style={{ perspective: 1000 }}
+  onMouseEnter={handleHover}
+  onMouseLeave={handleLeave}
+>
+  <motion.div
+    animate={{ rotateY: isFlipped ? 180 : 0 }}
+    transition={{ duration: 0.6 }}
+    className="relative w-full h-full"
+    style={{ transformStyle: "preserve-3d" }}
+  >
+    {/* Front Image Wrapper */}
+    <div
+      className="absolute w-full h-full rounded-full overflow-hidden border-4 border-teal-400 shadow-lg bg-black"
+      style={{
+        backfaceVisibility: "hidden",
+        transform: "rotateY(0deg)",
+      }}
+    >
+      <div className="w-full h-full">
+        <img
+          src={profileImg}
+          alt="Jean St. Cloud"
+          className="w-full h-full object-cover rounded-full"
+        />
+      </div>
+    </div>
+
+    {/* Back Image Wrapper */}
+    <div
+      className="absolute w-full h-full rounded-full overflow-hidden border-4 border-teal-400 shadow-lg bg-black"
+      style={{
+        backfaceVisibility: "hidden",
+        transform: "rotateY(180deg)",
+      }}
+    >
+      <div className="w-full h-full">
+        <img
+          src={altlogo}
+          alt="Pixel Jean"
+          className="w-full h-full object-cover rounded-full"
+        />
+      </div>
+    </div>
+  </motion.div>
+
+  {/* Sparkle Layer */}
+  <div
+    ref={sparkleRef}
+    className={`sparkle rounded-full pointer-events-none ${
+      showSparkle ? "show" : ""
+    }`}
+  />
+</motion.div>
+
 
       {/* Social Buttons */}
       <motion.div

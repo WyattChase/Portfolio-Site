@@ -33,49 +33,31 @@ a {
   animation: gradientShift 15s ease infinite;
 }
 
-.perspective {
-  perspective: 1000px;
-}
-
-.flip-hover {
-  transform-style: preserve-3d;
-  transition: transform 0.8s ease-in-out;
-}
-
-.flip-hover:hover {
-  transform: rotateY(180deg);
-}
-
-.flip-card {
-  perspective: 1000px;
-  width: 40px;
-  height: 40px;
-}
-
-.flip-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-front,
-.flip-back {
+.sparkle {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 9999px;
-  overflow: hidden;
-  border: 2px solid #14b8a6; /* teal-500 */
-  object-fit: cover;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.flip-back {
-  transform: rotateY(180deg);
+.sparkle.show {
+  opacity: 1;
+  animation: sparkle-fade 0.6s ease-out;
+}
+
+@keyframes sparkle-fade {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
 }
