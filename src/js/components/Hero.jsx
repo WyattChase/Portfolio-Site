@@ -162,3 +162,4 @@ const Hero = () => {
 };
 
 export default Hero;
+public/assets
