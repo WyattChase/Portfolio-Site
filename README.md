@@ -1,39 +1,28 @@
-# Hello World with React boilerplate
+# Jean St. Cloud — Developer Portfolio
 
-Start coding a react application
+Welcome to my personal portfolio built with React, Tailwind CSS, Vite, Firebase, and Framer Motion. This site showcases my skills, projects, and creativity in development, game QA, and music.
 
-> If you are working locally instead of using codespaces or gitpod, please follow [local installation steps](#local-installation-skip-if-you-are-working-on-codespaces-or-gitpod) and come back to this part of the readme.
+![screenshot](https://private-user-images.githubusercontent.com/110052742/451649289-38e90f32-8420-47b4-92ad-3084c602882e.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkwOTAwMDEsIm5iZiI6MTc0OTA4OTcwMSwicGF0aCI6Ii8xMTAwNTI3NDIvNDUxNjQ5Mjg5LTM4ZTkwZjMyLTg0MjAtNDdiNC05MmFkLTMwODRjNjAyODgyZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNjA1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDYwNVQwMjE1MDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iY2IxYjVlZTMwYTNjYmU3MDZhNmI5MjBjMjBhMDlmMDg4NDFjYTBlNjQ3MzNmNGU1ZmU2MmQxMTZlOWY1MjNjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.fuzGQQrKY1bqV9TLAXDS_qMRoHzXUctKOhNm_M5VxLY) <!-- Optional: Replace or remove -->
 
-## How to start coding?
+## 🚀 Live Demo
 
-- Install the packages with `$ npm install`.
-- Run the webpack server with `$ npm run start`
+Coming soon! Hosted on [Vercel](https://vercel.com).
 
-You can update the `styles/index.css` or `js/index.js` depending on your needs.
-Add more files into your, `./src/js/components` or styles folder as you need them.
+## 🛠 Tech Stack
 
-## Local Installation (skip if you are working on codespaces or gitpod)
+- ⚛️ React (with Vite)
+- 💨 Tailwind CSS
+- 🧠 Firebase (Firestore)
+- 🎞️ Framer Motion
+- 🔧 React Icons
 
-Download the boilerplate using git
+## ✨ Features
 
-```
-$ git clone https://github.com/4GeeksAcademy/react-hello.git
-$ cd react-hello
-```
+- Responsive design across all devices
+- Animated UI interactions using Framer Motion
+- Contact form with Firebase Firestore integration and toast notifications
+- Interactive tooltips and background effects (starfield + canvas particles)
+- Custom animations and image transitions
 
-## Publish your website!
 
-This boilerplate is 100% compatible with the free [github pages](https://pages.github.com/) and [vercel](https://vercel.com/) hosting.
-
-It takes just 2 minutes to deploy, [click here to start the process](https://4geeks.com/docs/start/deploy-to-render-com).
-
-## Other features
-
-- Automatic Code Formatting: Use of [Prettier](https://prettier.io/) for automatic code indentation and formatting.
-- Error reporting: Use of [eslint](https://eslint.org/) for better error reporting.
-
-### Contributors
-
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
-
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+Made with 💻, 🎮, and 🎶 by Jean St. Cloud
