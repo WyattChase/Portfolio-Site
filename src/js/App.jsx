@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import StarfieldBackground from "./components/Starfield-background";
 import Home from "./pages/Home";
 
+
 function App() {
   return (
     <Router>

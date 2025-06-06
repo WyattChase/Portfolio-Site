@@ -3,6 +3,8 @@ import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaUserAstronaut, FaGamepad, FaCode, FaMusic } from "react-icons/fa";
 import StarfieldBackground from "./Starfield-background.jsx";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function About() {
   const scrollRef = useRef(null);
@@ -91,14 +93,15 @@ export default function About() {
         </div>
 
         <div className="text-center mb-10">
-          <a
-            href="/assets/jeans-resume.pdf"
+          <Link
+            href="/public/jeans-resume.pdf"
             download
+            locale={false}
             onClick={() => toast.success("Downloading résumé...")}
             className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
           >
             Download Résumé
-          </a>
+          </Link>
         </div>
 
         <div className="space-y-6">

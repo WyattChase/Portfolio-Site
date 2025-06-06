@@ -5,6 +5,8 @@ import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import profileImg from "../../../assets/jaysax.jpg";
 import altlogo from "../../../assets/alt-jaysax.png";
 import sparkleSound from "../../../assets/sparkle.wav";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Hero = () => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -128,15 +130,16 @@ const Hero = () => {
         transition={{ delay: 0.6, duration: 0.6 }}
         className="flex flex-wrap justify-center gap-4"
       >
-        <a
-          href="/assets/jeans-resume.pdf"
+        <Link
+          href="/public/jeans-resume.pdf"
           target="_blank"
+          locale={false}
           rel="noopener noreferrer"
           onClick={() => toast.success("Opening résumé...")}
           className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
         >
           View Résumé
-        </a>
+        </Link>
 
         <a
           href="https://www.linkedin.com/in/jean-st-cloud/"
