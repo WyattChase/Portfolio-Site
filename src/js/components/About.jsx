@@ -9,25 +9,25 @@ import toast from "react-hot-toast";
 export default function About() {
   const scrollRef = useRef(null);
 
-  const onButtonClick = async () => {
-    const pdfUrl = "/jeans-resume.pdf";
-    try {
-      const res = await fetch(pdfUrl, { method: "HEAD" });
-      if (res.ok) {
-        const link = document.createElement("a");
-        link.href = pdfUrl;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.download = "Jean-Software-Engineer-Resume.pdf";
-        link.click();
-        toast.success("Opening résumé...");
-      } else {
-        toast.error("PDF not found!");
-      }
-    } catch {
-      toast.error("Could not load résumé.");
-    }
-  };
+  // const onButtonClick = async () => {
+  //   const pdfUrl = "/jeans-resume.pdf";
+  //   try {
+  //     const res = await fetch(pdfUrl, { method: "HEAD" });
+  //     if (res.ok) {
+  //       const link = document.createElement("a");
+  //       link.href = pdfUrl;
+  //       link.target = "_blank";
+  //       link.rel = "noopener noreferrer";
+  //       link.download = "Jean-Software-Engineer-Resume.pdf";
+  //       link.click();
+  //       toast.success("Opening résumé...");
+  //     } else {
+  //       toast.error("PDF not found!");
+  //     }
+  //   } catch {
+  //     toast.error("Could not load résumé.");
+  //   }
+  // };
 
   // const onButtonClick = () => {
   //   // using PDF in public directory
@@ -123,14 +123,14 @@ export default function About() {
           </div>
         </div>
 
-        <div className="text-center mb-10">
-          <button
-            className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
-            onClick={onButtonClick}
-          >
-            Download PDF
-          </button>
-        </div>
+        <a
+          href="/jeans-resume.pdf"
+          download
+          onClick={() => toast.success("Downloading Résumé...")}
+          className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
+        >
+          Download Résumé
+        </a>
 
         <div className="space-y-6">
           <h2 className="text-2xl font-bold text-center text-teal-400 mb-4">
