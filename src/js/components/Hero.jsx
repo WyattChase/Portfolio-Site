@@ -129,7 +129,7 @@ const Hero = () => {
         className="flex flex-wrap justify-center gap-4"
       >
         <a
-          href="/jeans-resume.pdf"
+          href="../../../assets/jeans-resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
