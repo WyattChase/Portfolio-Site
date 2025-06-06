@@ -94,7 +94,7 @@ export default function About() {
 
         <div className="text-center mb-10">
           <Link
-            href="/public/jeans-resume.pdf"
+            href="/jeans-resume.pdf"
             download
             locale={false}
             onClick={() => toast.success("Downloading résumé...")}

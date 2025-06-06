@@ -131,7 +131,7 @@ const Hero = () => {
         className="flex flex-wrap justify-center gap-4"
       >
         <Link
-          href="/public/jeans-resume.pdf"
+          href="/jeans-resume.pdf"
           target="_blank"
           locale={false}
           rel="noopener noreferrer"
