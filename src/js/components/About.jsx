@@ -9,16 +9,36 @@ import toast from "react-hot-toast";
 export default function About() {
   const scrollRef = useRef(null);
 
-  const onButtonClick = () => {
-    // using PDF in public directory
+  const onButtonClick = async () => {
     const pdfUrl = "/jeans-resume.pdf";
-    const link = document.createElement("a");
-    link.href = pdfUrl;
-    link.download = "Jean-Software-Engineer-Resume.pdf"; // Specify the desired filename for download
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link); // Clean up the element
+    try {
+      const res = await fetch(pdfUrl, { method: "HEAD" });
+      if (res.ok) {
+        const link = document.createElement("a");
+        link.href = pdfUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.download = "Jean-Software-Engineer-Resume.pdf";
+        link.click();
+        toast.success("Opening résumé...");
+      } else {
+        toast.error("PDF not found!");
+      }
+    } catch {
+      toast.error("Could not load résumé.");
+    }
   };
+
+  // const onButtonClick = () => {
+  //   // using PDF in public directory
+  //   const pdfUrl = "/jeans-resume.pdf";
+  //   const link = document.createElement("a");
+  //   link.href = pdfUrl;
+  //   link.download = "Jean-Software-Engineer-Resume.pdf"; // Specify the desired filename for download
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link); // Clean up the element
+  // };
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;

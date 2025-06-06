@@ -14,14 +14,23 @@ const Hero = () => {
   const sparkleRef = useRef(null);
   const audioRef = useRef(null);
 
-  const onButtonClick = () => {
-    // using PDF in public directory
+  const onButtonClick = async () => {
     const pdfUrl = "/jeans-resume.pdf";
-    const link = document.createElement("a");
-    link.href = pdfUrl;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link); // Clean up the element
+    try {
+      const res = await fetch(pdfUrl, { method: "HEAD" });
+      if (res.ok) {
+        const link = document.createElement("a");
+        link.href = pdfUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.click();
+        toast.success("Opening résumé...");
+      } else {
+        toast.error("PDF not found!");
+      }
+    } catch {
+      toast.error("Could not load résumé.");
+    }
   };
 
   const handleHover = () => {
