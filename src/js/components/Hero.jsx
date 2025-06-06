@@ -15,7 +15,8 @@ const Hero = () => {
   const audioRef = useRef(null);
 
   const onButtonClick = async () => {
-    const pdfUrl = "https://5bqhylvkjdw2b5yw.public.blob.vercel-storage.com/jeans-resume-Vci4O7atqLpxYspUBNHSGTyqk308FE.pdf";
+    const pdfUrl =
+      "https://5bqhylvkjdw2b5yw.public.blob.vercel-storage.com/jeans-resume-Vci4O7atqLpxYspUBNHSGTyqk308FE.pdf";
     try {
       const res = await fetch(pdfUrl, { method: "HEAD" });
       if (res.ok) {
@@ -157,14 +158,13 @@ const Hero = () => {
         >
           View Résumé
         </Link> */}
-        <a>
-          <button
-            className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
-            onClick={onButtonClick}
-          >
-            View Résumé
-          </button>
-        </a>
+
+        <button
+          className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
+          onClick={onButtonClick}
+        >
+          View Résumé
+        </button>
 
         <a
           href="https://www.linkedin.com/in/jean-st-cloud/"
