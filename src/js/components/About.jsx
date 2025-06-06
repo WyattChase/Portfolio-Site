@@ -92,11 +92,12 @@ export default function About() {
 
         <div className="text-center mb-10">
           <a
-            href="/jeans-resume.pdf"
+            href="/assets/jeans-resume.pdf"
             download
-            className="inline-block bg-gradient-to-r from-blue-500 to-teal-500 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition"
+            onClick={() => toast.success("Downloading résumé...")}
+            className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
           >
-            Download Resume
+            Download Résumé
           </a>
         </div>
 
