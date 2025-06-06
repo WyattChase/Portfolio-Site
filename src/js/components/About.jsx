@@ -9,6 +9,17 @@ import toast from "react-hot-toast";
 export default function About() {
   const scrollRef = useRef(null);
 
+  const onButtonClick = () => {
+    // using PDF in public directory
+    const pdfUrl = "/jeans-resume.pdf";
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = "Jean-Software-Engineer-Resume.pdf"; // Specify the desired filename for download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link); // Clean up the element
+  };
+
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     const scrollSpeed = 1;
@@ -93,15 +104,12 @@ export default function About() {
         </div>
 
         <div className="text-center mb-10">
-          <Link
-            href="/jeans-resume.pdf"
-            download
-            locale={false}
-            onClick={() => toast.success("Downloading résumé...")}
+          <button
             className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
+            onClick={onButtonClick}
           >
-            Download Résumé
-          </Link>
+            Download PDF
+          </button>
         </div>
 
         <div className="space-y-6">

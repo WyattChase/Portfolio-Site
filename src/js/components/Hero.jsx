@@ -14,6 +14,16 @@ const Hero = () => {
   const sparkleRef = useRef(null);
   const audioRef = useRef(null);
 
+  const onButtonClick = () => {
+    // using PDF in public directory
+    const pdfUrl = "/jeans-resume.pdf";
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link); // Clean up the element
+  };
+
   const handleHover = () => {
     setIsFlipped(true);
     setShowSparkle(true);
@@ -130,16 +140,22 @@ const Hero = () => {
         transition={{ delay: 0.6, duration: 0.6 }}
         className="flex flex-wrap justify-center gap-4"
       >
-        <Link
+        {/* <Link
           href="/jeans-resume.pdf"
           target="_blank"
-          locale={false}
           rel="noopener noreferrer"
           onClick={() => toast.success("Opening résumé...")}
-          className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
         >
           View Résumé
-        </Link>
+        </Link> */}
+        <a>
+          <button
+            className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
+            onClick={onButtonClick}
+          >
+            View Résumé
+          </button>
+        </a>
 
         <a
           href="https://www.linkedin.com/in/jean-st-cloud/"
