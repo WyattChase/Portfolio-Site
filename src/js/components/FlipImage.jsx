@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import profileImg from "../../../public/assets/jaysax.jpg";
-import altLogo from "../../../public/assets/alt-jaysax.png";
+import profileImg from "/assets/jaysax.jpg";
+import altLogo from "/assets/alt-jaysax.png";
 
 const FlipImage = ({ front = profileImg, back = altLogo }) => {
   const [isFlipped, setIsFlipped] = useState(false);
