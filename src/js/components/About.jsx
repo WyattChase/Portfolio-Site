@@ -29,16 +29,16 @@ export default function About() {
   //   }
   // };
 
-  // const onButtonClick = () => {
-  //   // using PDF in public directory
-  //   const pdfUrl = "/jeans-resume.pdf";
-  //   const link = document.createElement("a");
-  //   link.href = pdfUrl;
-  //   link.download = "Jean-Software-Engineer-Resume.pdf"; // Specify the desired filename for download
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   document.body.removeChild(link); // Clean up the element
-  // };
+  const onButtonClick = () => {
+    // using PDF in public directory
+    const pdfUrl = "/jeans-resume.pdf";
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = "Jean-Software-Engineer-Resume.pdf"; // Specify the desired filename for download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link); // Clean up the element
+  };
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -122,16 +122,16 @@ export default function About() {
             </p>
           </div>
         </div>
-
-        <a
-          href="/jeans-resume.pdf"
-          download
-          onClick={() => toast.success("Downloading Résumé...")}
-          className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
-        >
-          Download Résumé
-        </a>
-
+        <div className="text-center">
+          <a
+            href="/jeans-resume.pdf"
+            download
+            onClick={() => toast.success("Downloading Résumé...")}
+            className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:opacity-90 text-white font-medium rounded shadow-md transition"
+          >
+            Download Résumé
+          </a>
+        </div>
         <div className="space-y-6">
           <h2 className="text-2xl font-bold text-center text-teal-400 mb-4">
             Timeline of My Journey
